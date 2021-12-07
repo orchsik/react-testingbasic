@@ -1,3 +1,7 @@
-export const fetchTasks = jest.fn(async () => []);
+let mockTasks = [];
 
-export default {};
+export const fetchTasks = jest.fn(async () => mockTasks);
+
+export const setMockTasks = (tasks) => {
+  mockTasks = tasks;
+};

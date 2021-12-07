@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import List from "./List";
 
@@ -8,5 +8,5 @@ export default function ListContainer() {
     tasks: state.tasks,
   }));
 
-  return <List tasks={tasks} onClickDelete={handleClickDeleteTask} />;
+  return <List tasks={tasks} />;
 }
