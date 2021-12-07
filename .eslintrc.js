@@ -4,7 +4,10 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: ["plugin:react/recommended", "airbnb"],
+  extends: [
+    "plugin:react/recommended",
+    // "airbnb"
+  ],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
@@ -34,14 +37,15 @@ module.exports = {
     "keyword-spacing": ["error", { before: true, after: true }],
     "comma-spacing": ["error", { before: false, after: true }],
     "comma-style": ["error", "last"],
-    "comma-dangle": ["error", "always-multiline"],
+    // "comma-dangle": ["error", "always-multiline"],
     "space-in-parens": ["error", "never"],
     "block-spacing": "error",
     "array-bracket-spacing": ["error", "never"],
     "object-curly-spacing": ["error", "always"],
     "key-spacing": ["error", { mode: "strict" }],
     "arrow-spacing": ["error", { before: true, after: true }],
-    "jsx-a11y/label-has-associated-control": ["error", { assert: "either" }],
+    // "jsx-a11y/label-has-associated-control": ["error", { assert: "either" }],
+    "react/prop-types": "off",
     "react/prop-types": "off",
   },
 };
