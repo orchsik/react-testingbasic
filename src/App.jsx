@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import ListContainer from "./ListContainer";
 
 export default function App() {
   return (
     <div>
-      <h3>To-do</h3>
-      <ul>
-        <li>아무일도 하기 싫다.</li>
-      </ul>
+      <h1>To-do</h1>
+      <ListContainer />
     </div>
   );
 }

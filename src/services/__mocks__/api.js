@@ -1,3 +1,3 @@
-// export const fetchTasks = jest.fn(async () => []);
+export const fetchTasks = jest.fn(async () => []);
 
-// export default {};
+export default {};
