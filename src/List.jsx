@@ -11,7 +11,7 @@ export default function List({ tasks, onClick }) {
         return (
           <li key={task.id}>
             {task.title}
-            <button type="button" onClick={onClick}>
+            <button type="button" onClick={() => onClick(task.id)}>
               완료
             </button>
           </li>

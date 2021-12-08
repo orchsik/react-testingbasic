@@ -23,7 +23,7 @@ describe("List", () => {
       const { getAllByText } = renderList(tasks);
       const buttons = getAllByText("완료");
       fireEvent.click(buttons[0]);
-      expect(handleClick).toBeCalled();
+      expect(handleClick).toBeCalledWith(1);
     });
   });
 
