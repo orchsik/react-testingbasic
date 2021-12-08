@@ -11,6 +11,8 @@ export function setTasks(tasks) {
 
 export function loadTasks() {
   return async (dispatch) => {
+    dispatch(setTasks([]));
+
     const tasks = await fetchTasks();
     dispatch(setTasks(tasks.slice(0, 10)));
   };
