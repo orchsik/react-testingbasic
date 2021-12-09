@@ -1,6 +1,6 @@
 import React from "react";
-import Counter from "./Counter";
-import Profile from "./Profile";
+import Counter from "./counter/Counter";
+import Profile from "./profile/Profile";
 
 const App = () => {
   return (

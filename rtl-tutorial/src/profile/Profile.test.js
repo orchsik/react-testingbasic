@@ -6,12 +6,13 @@ describe("<Profile>", () => {
     username: "액션가면",
     name: "신짱구",
   };
-  const utils = render(<Profile {...props} />);
 
   it("matches sanpshot", () => {
+    const utils = render(<Profile {...props} />);
     expect(utils.container).toMatchSnapshot();
   });
   it("shows teh props correctly", () => {
+    const utils = render(<Profile {...props} />);
     utils.getByText("액션가면");
     utils.getByText("신짱구");
     utils.getByText(/신/);
