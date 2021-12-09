@@ -17,7 +17,18 @@ require("../config/env");
 
 const jest = require("jest");
 const execSync = require("child_process").execSync;
+
+// process.argv ???
+// yarn test --watch 컨맨드 입력할 경우 아래와 같음.
+// argv: [
+//   'C:\\Program Files\\nodejs\\node.exe',
+//   'C:\\Users\\orchsik\\Downloads\\react-testingBasic\\rtl-tutorial\\scripts\\test.js',
+//   --watch
+// ]
 let argv = process.argv.slice(2);
+
+// process.env.CI ???
+// netlify(호스팅 서비스) 사용시 설정되는 값
 
 function isInGitRepository() {
   try {
@@ -47,5 +58,9 @@ if (
   const hasSourceControl = isInGitRepository() || isInMercurialRepository();
   argv.push(hasSourceControl ? "--watch" : "--watchAll");
 }
+
+// jest --watch [VS] jest --watchAll
+// jest --watch     # runs jest -o by default jest -o : Run tests related to changed files based on hg/git (uncommitted files)
+// jest --watchAll  # runs all tests
 
 jest.run(argv);
