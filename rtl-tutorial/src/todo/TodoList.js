@@ -2,11 +2,11 @@ import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, onToggle, onRemove }) => {
   return (
-    <ul>
+    <ul data-testid="TodoList">
       {todos.map((todo, idx) => {
         return (
           <TodoItem
-            key={todo.id}
+            key={idx}
             todo={todo}
             onToggle={onToggle}
             onRemove={onRemove}
