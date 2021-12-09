@@ -7,35 +7,30 @@ import TodoList from "./TodoList";
 const TodoApp = () => {
   const [todos, setTodos] = useState(sampleTodos);
 
-  const onInsert = useCallback(
-    (text) => {
+  const onInsert = useCallback((text) => {
+    setTodos((todos) => {
       const id = Math.max(...Object.values(todos).map((D) => D.id)) + 1;
       const obj = { id, text, done: false };
-      setTodos([...todos, obj]);
-    },
-    [todos]
-  );
+      return [...todos, obj];
+    });
+  }, []);
 
-  const onToggle = useCallback(
-    (id) => {
-      setTodos(
-        todos.map((todo) => {
-          if (todo.id === id) {
-            return { ...todo, done: !todo.done };
-          }
-          return todo;
-        })
-      );
-    },
-    [todos]
-  );
+  const onToggle = useCallback((id) => {
+    setTodos((todos) => {
+      return todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, done: !todo.done };
+        }
+        return todo;
+      });
+    });
+  }, []);
 
-  const onRemove = useCallback(
-    (id) => {
-      setTodos(todos.filter((todo) => todo.id !== id));
-    },
-    [todos]
-  );
+  const onRemove = useCallback((id) => {
+    setTodos((todos) => {
+      return todos.filter((todo) => todo.id !== id);
+    });
+  }, []);
 
   return (
     <>
