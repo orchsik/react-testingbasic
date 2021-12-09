@@ -3,28 +3,26 @@ import React, { useCallback, useState } from "react";
 import Counter from "./counter/Counter";
 import Profile from "./profile/Profile";
 import TodoForm from "./todo/TodoForm";
-import TodoItem from "./todo/TodoItem";
+
+import { sampleTodos } from "./fixture/todo";
+import TodoList from "./todo/TodoList";
 
 const App = () => {
-  const [todoList, setTodoList] = useState([
-    { id: 1, text: "TDD 배우기", done: false },
-    { id: 3, text: "DDD 배우기", done: false },
-    { id: 2, text: "CI/CD 배우기", done: false },
-  ]);
+  const [todos, setTodos] = useState(sampleTodos);
 
   const insert = useCallback(
     (text) => {
-      const id = Math.max(...Object.values(todoList).map((D) => D.id));
+      const id = Math.max(...Object.values(todos).map((D) => D.id));
       const obj = { id, text, done: false };
-      setTodoList([...todoList, obj]);
+      setTodos([...todos, obj]);
     },
-    [todoList]
+    [todos]
   );
 
-  const toggle = useCallback(
+  const onToggle = useCallback(
     (id) => {
-      setTodoList(
-        todoList.map((todo) => {
+      setTodos(
+        todos.map((todo) => {
           if (todo.id === id) {
             return { ...todo, done: false };
           }
@@ -32,13 +30,13 @@ const App = () => {
         })
       );
     },
-    [todoList]
+    [todos]
   );
 
-  const remove = useCallback(
+  const onRemove = useCallback(
     (id) => {
-      setTodoList(
-        todoList.map((todo) => {
+      setTodos(
+        todos.map((todo) => {
           if (todo.id === id) {
             return { ...todo, done: true };
           }
@@ -46,7 +44,7 @@ const App = () => {
         })
       );
     },
-    [todoList]
+    [todos]
   );
 
   return (
@@ -60,11 +58,7 @@ const App = () => {
       <TodoForm onInsert={insert} />
       <br />
       <br />
-      {todoList.map((todo, idx) => {
-        return (
-          <TodoItem key={idx} todo={todo} onToggle={toggle} onRemove={remove} />
-        );
-      })}
+      <TodoList todos={todos} toggle={onToggle} remove={onRemove} />
     </>
   );
 };
